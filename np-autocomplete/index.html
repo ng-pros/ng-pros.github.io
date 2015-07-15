@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="google-site-verification" content="yPdTnfzuHBnglc-wFmFlMqLitUlggXrJZ3B4GrACsLA"/>
+
+		<title>Np-autocomplete - wiki</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+		<style>
+			.tab {
+				margin: 0 0 0 2em;
+			}
+		</style>
+
+		<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="../index.html">Ng-pros</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Directives <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li class="active"><a href="">np-autocomplete</a></li>
+							</ul>
+						</li>
+						<li class="active"><a href="">wiki <span class="sr-only">(current)</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="page-header">
+						<h1>Np-autocomplete <small>is a full-functional autocomplete (typeahead alternative) AngularJS directive.</small></h1>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<h3>Key Features:</h3>
+					<ul>
+						<li>The easiest to setup.</li>
+						<li>100% compatible and optimised by default for bootstrap 3.3.5+</li>
+						<li>Provides 3 models: ngModel, input model and the selected item.</li>
+						<li>Uses the transclusion, which gives the flexibility with the input element.</li>
+						<li>Customizable in the way you like.</li>
+						<li>Multiple states (closed, opened and loading).</li>
+					</ul>
+				</div>
+				<div class="col-xs-12">
+					<h3>Requirements:</h3>
+					<ul>
+						<li>JQuery 2.1.4+.</li>
+						<li>AngularJS 1.3.16+.</li>
+						<li>Bootstrap 3.3.5+ (for default template).</li>
+					</ul>
+				</div>
+				<div class="col-xs-12">
+					<h3>Getting Started:</h3>
+					Download the package, then include <strong>dist/np-autocomplete.min.js</strong> and <strong>dist/np-autocomplete.min.css</strong> in your page.
+				<pre>bower install np-autocomplete --save</pre>
+				Now, add it to your angular module dependencies list as the following:
+				<pre>angular.module('yourModule', [
+  'np-autocomplete',
+  ...
+]);</pre></div>
+				<div class="col-xs-12">
+					<h3>Usage:</h3>
+					<h5>html:</h5>
+					<pre>&lt;div autocomplete=&quot;npAutocompleteOptions&quot;&gt;
+  &lt;input type=&quot;text&quot; class=&quot;form-control&quot;/&gt;
+&lt;/div&gt;</pre>
+					<h5>js:</h5>
+					<pre>myAngularApp.controller('ctrl', ['$scope', function($scope) {
+  $scope.npAutocompleteOptions = {
+    url: 'https://api.github.com/search/repositories'
+  };
+}]);</pre>
+				</div>
+				<div class="col-xs-12">
+					<h3>Attributes:</h3>
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th>Attribute</th>
+									<th>Required</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>np-autocomplete</td>
+									<td>Yes</td>
+									<td>Passes options object to the directive.</td>
+								</tr>
+								<tr>
+									<td>ng-model</td>
+									<td>No</td>
+									<td>Holds the value of an attribute of the selected item, e.g. "id".</td>
+								</tr>
+								<tr>
+									<td>np-input-model</td>
+									<td>No</td>
+									<td>Holds the input element value.</td>
+								</tr>
+								<tr>
+									<td>np-selected-item</td>
+									<td>No</td>
+									<td>Holds the whole selected item object.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<h3>Options:</h3>
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th>Attribute</th>
+									<th>Type</th>
+									<th>Required</th>
+									<th>Default Value</th>
+									<th>Example</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>url</td>
+									<td>String</td>
+									<td>Yes</td>
+									<td></td>
+									<td>https://api.github.com/search/repositories</td>
+									<td>Data source url.</td>
+								</tr>
+								<tr>
+									<td>nameAttr</td>
+									<td>String</td>
+									<td>No</td>
+									<td>name</td>
+									<td>full_name</td>
+									<td>Defines the attribute which will be shown in the list (usually, it is the search field).</td>
+								</tr>
+								<tr>
+									<td>valueAttr</td>
+									<td>String</td>
+									<td>No</td>
+									<td>id</td>
+									<td>downloads_url</td>
+									<td>Defines the attribute which will be assigned to the ng-model attribute.</td>
+								</tr>
+								<tr>
+									<td>limit</td>
+									<td>Integer</td>
+									<td>No</td>
+									<td>5</td>
+									<td>10</td>
+									<td>Sets the value of the limit query param.</td>
+								</tr>
+								<tr>
+									<td>limitParam</td>
+									<td>String</td>
+									<td>No</td>
+									<td>limit</td>
+									<td>per_page</td>
+									<td>Query param holds the limit value in requests.</td>
+								</tr>
+								<tr>
+									<td>searchParam</td>
+									<td>String</td>
+									<td>No</td>
+									<td>search</td>
+									<td>query</td>
+									<td>Query param holds the search text in requests.</td>
+								</tr>
+								<tr>
+									<td>delay</td>
+									<td>Integer</td>
+									<td>No</td>
+									<td>500 (ms)</td>
+									<td>1000 (ms)</td>
+									<td>Time in milliseconds which delays request after changing the search text.</td>
+								</tr>
+								<tr>
+									<td>minlength</td>
+									<td>Integer</td>
+									<td>No</td>
+									<td>2</td>
+									<td>5</td>
+									<td>The minimum length of string required before start searching.</td>
+								</tr>
+								<tr>
+									<td>clearOnSelect</td>
+									<td>Boolean</td>
+									<td>No</td>
+									<td>false</td>
+									<td>true</td>
+									<td>Either clear the search text after selecting an item or not.</td>
+								</tr>
+								<tr>
+									<td>template</td>
+									<td>String (HTML)</td>
+									<td>No</td>
+									<td></td>
+									<td></td>
+									<td>Overrides the default template.</td>
+								</tr>
+								<tr>
+									<td>templateUrl</td>
+									<td>String</td>
+									<td>No</td>
+									<td></td>
+									<td></td>
+									<td>Gets template with $templateCache to overrides the default template.</td>
+								</tr>
+								<tr>
+									<td>itemTemplate</td>
+									<td>String (HTML)</td>
+									<td>No</td>
+									<td></td>
+									<td></td>
+									<td>Overrides the default template of the list item.</td>
+								</tr>
+								<tr>
+									<td>itemTemplateUrl</td>
+									<td>String</td>
+									<td>No</td>
+									<td></td>
+									<td></td>
+									<td>Gets template with $templateCache to overrides the default template of the list item.</td>
+								</tr>
+								<tr>
+									<td>params</td>
+									<td>Object</td>
+									<td>No</td>
+									<td></td>
+									<td>
+										{ sort: 'stars' }
+									</td>
+									<td>Extra params to send with each request.</td>
+								</tr>
+								<tr>
+									<td>closedClass</td>
+									<td>string</td>
+									<td>No</td>
+									<td>np-autocomplete-closed</td>
+									<td>np-autocomplete-closed closed2</td>
+									<td>Class(es) to be added to directive in 'closed' state.</td>
+								</tr>
+								<tr>
+									<td>openedClass</td>
+									<td>string</td>
+									<td>No</td>
+									<td>np-autocomplete-opened</td>
+									<td>np-autocomplete-opened opened2</td>
+									<td>Class(es) to be added to directive in 'opened' state.</td>
+								</tr>
+								<tr>
+									<td>loadingClass</td>
+									<td>string</td>
+									<td>No</td>
+									<td>np-autocomplete-loading</td>
+									<td>np-autocomplete-loading loading2</td>
+									<td>Class(es) to be added to directive in 'loading' state.</td>
+								</tr>
+								<tr>
+									<td>each</td>
+									<td>function</td>
+									<td>No</td>
+									<td></td>
+									<td>
+										function(item) {
+										<p class="tab">console.log(item);</p>
+										}
+									</td>
+									<td>Iterates over elements of retrived data.</td>
+								</tr>
+								<tr>
+									<td>onSelect</td>
+									<td>function</td>
+									<td>No</td>
+									<td></td>
+									<td>
+										function(item) {
+										<p class="tab">console.log(item);</p>
+										}
+									</td>
+									<td>A callback function called when a selection is made.</td>
+								</tr>
+								<tr>
+									<td>onDeselect</td>
+									<td>function</td>
+									<td>No</td>
+									<td></td>
+									<td>
+										function() {
+										<p class="tab">console.log('Lost selection');</p>
+										}
+									</td>
+									<td>A callback function called when the selection is lost.</td>
+								</tr>
+								<tr>
+									<td>onError</td>
+									<td>function</td>
+									<td>No</td>
+									<td></td>
+									<td>
+										function(errorData) {
+										<p class="tab">console.log(errorData);</p>
+										}
+									</td>
+									<td>A callback function called when an error occurred.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
