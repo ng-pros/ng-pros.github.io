@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="description" content="Full-functional autocomplete (typeahead alternative) AngularJS directive">
+		<meta name="keywords" content="autocomplete,typeahead,typeahead alternative,angularjs,angular,directive">
+		<meta name="author" content="Raeef Refai">
+
+		<title>Np-autocomplete - demos</title>
+
+		<link rel="alternate" href="ng-pros.github.io/np-autocomplete" hreflang="en"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="np-autocomplete.min.css">
+
+		<style>
+			body {
+				padding-top: 70px;
+			}
+
+			.np-autocomplete-list .list-group-item.search-item {
+				padding-left: 72px;
+			}
+
+			.np-autocomplete-list img {
+				margin-left: -60px;
+			}
+		</style>
+
+		<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+		<script src="np-autocomplete.min.js"></script>
+		<script src="app.js"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="../index.html">Ng-pros</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Directives <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li class="active"><a href="">np-autocomplete</a></li>
+							</ul>
+						</li>
+						<li><a href="index.html">wiki</a></li>
+						<li class="active"><a href="">demos <span class="sr-only">(current)</span></a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="https://github.com/ng-pros/np-autocomplete">Code on Github</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="page-header">
+						<h1>Np-autocomplete <small>is a full-functional autocomplete (typeahead alternative) AngularJS directive.</small></h1>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12" ng-controller="ctrl">
+					<div class="form-group" np-autocomplete="options">
+						<label class="control-label">Github Repository:</label>
+						<input type="text" class="form-control"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-65181959-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+	</body>
+</html>
