@@ -29,6 +29,7 @@ angular.module('app', ['ng-pros.directive.autocomplete'])
 		"\tdataHolder: 'items',\n" +
 		"\tlimitParam: 'per_page',\n" +
 		"\tsearchParam: 'q',\n" +
+		"\tminlength: 1,\n" +
 		"\titemTemplate:\n" +
 		"\t'<button type=\"button\" class=\"list-group-item search-item\" ng-repeat=\"item in searchResults\" ng-click=\"select(item)\">' +\n" +
 		"\t\t'<img class=\"pull-left\" src=\"github.png\" width=\"48\"/>' +\n" +
