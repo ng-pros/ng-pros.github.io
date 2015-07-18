@@ -8,6 +8,7 @@ angular.module('app', ['ng-pros.directive.autocomplete'])
 		dataHolder: 'items',
 		limitParam: 'per_page',
 		searchParam: 'q',
+		minlength: 1,
 		itemTemplate:'<button type="button" class="list-group-item search-item" ng-repeat="item in searchResults" ng-click="select(item)">' +
 			'<img class="pull-left" ng-src="{{item.owner.avatar_url}}" width="48"/>' +
 			'<strong ng-bind-html="match(item.full_name)"></strong>' +
