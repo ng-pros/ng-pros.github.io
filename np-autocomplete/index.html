@@ -71,7 +71,7 @@
 						<li>Provides 3 models: ngModel, input model and the selected item.</li>
 						<li>Uses the transclusion, which gives the flexibility with the input element.</li>
 						<li>Customizable in the way you like.</li>
-						<li>Multiple states (closed, opened and loading).</li>
+						<li>Multiple states (close, open, load and error).</li>
 					</ul>
 				</div>
 				<div class="col-xs-12">
@@ -90,7 +90,9 @@
 				<pre>angular.module('yourModule', [
   'np-autocomplete',
   ...
-]);</pre></div>
+]);</pre>
+					<p><strong>Note:</strong> if you were using version <mark>1.0.x</mark> then refer to <a href="https://github.com/ng-pros/np-autocomplete/blob/master/CHANGELOG.md">CHANGELOG</a>.</p>
+				</div>
 				<div class="col-xs-12">
 					<h3>Quick Usage:</h3>
 					<h5>html:</h5>
@@ -125,17 +127,22 @@
 								<tr>
 									<td>ng-model</td>
 									<td>No</td>
-									<td>Holds the value of an attribute of the selected item, e.g. "id".</td>
+									<td>A model holds the value of an attribute of the selected item, e.g. "id".</td>
 								</tr>
 								<tr>
 									<td>np-input-model</td>
 									<td>No</td>
-									<td>Holds the input element value.</td>
+									<td>A model holds the input element value (updating this model doesn't clear ng-model or make any request).</td>
 								</tr>
 								<tr>
 									<td>np-selected-item</td>
 									<td>No</td>
-									<td>Holds the whole selected item object.</td>
+									<td>A model holds the whole selected item object.</td>
+								</tr>
+								<tr>
+									<td>np-auto</td>
+									<td>No</td>
+									<td>A model which by updating it the following will happen: update np-input-model with its value, clear ng-model, make a request then flushes itself.</td>
 								</tr>
 							</tbody>
 						</table>
@@ -216,7 +223,7 @@
 									<td>minlength</td>
 									<td>Integer</td>
 									<td>No</td>
-									<td>2</td>
+									<td>1</td>
 									<td>5</td>
 									<td>The minimum length of string required before start searching.</td>
 								</tr>
@@ -235,6 +242,14 @@
 									<td>false</td>
 									<td>true</td>
 									<td>Either clear the search text after selecting an item or not.</td>
+								</tr>
+								<tr>
+									<td>highlightExactSearch</td>
+									<td>Boolean</td>
+									<td>No</td>
+									<td>true</td>
+									<td>false</td>
+									<td>either highlight with exact pattern or each portion separately.</td>
 								</tr>
 								<tr>
 									<td>template</td>
@@ -279,28 +294,108 @@
 									<td>Extra params to send with each request.</td>
 								</tr>
 								<tr>
-									<td>closedClass</td>
-									<td>string</td>
+									<td>loadStateMessage</td>
+									<td>String</td>
 									<td>No</td>
-									<td>np-autocomplete-closed</td>
-									<td>np-autocomplete-closed closed2</td>
-									<td>Class(es) to be added to directive in 'closed' state.</td>
+									<td>Something went wrong.</td>
+									<td>An error occurred.</td>
+									<td>A message to be shown while loading in progress.</td>
 								</tr>
 								<tr>
-									<td>openedClass</td>
-									<td>string</td>
+									<td>errorStateMessage</td>
+									<td>String</td>
 									<td>No</td>
-									<td>np-autocomplete-opened</td>
-									<td>np-autocomplete-opened opened2</td>
-									<td>Class(es) to be added to directive in 'opened' state.</td>
+									<td>Something went wrong.</td>
+									<td>An error occurred.</td>
+									<td>A message to be shown when an error occur.</td>
 								</tr>
 								<tr>
-									<td>loadingClass</td>
-									<td>string</td>
+									<td>noResultsMessage</td>
+									<td>String</td>
+									<td>No</td>
+									<td>No results found.</td>
+									<td>Couldn't find anything.</td>
+									<td>A message to be shown when no results found.</td>
+								</tr>
+								<tr>
+									<td>listClass</td>
+									<td>String</td>
+									<td>No</td>
+									<td>list-group</td>
+									<td>list-group np-list</td>
+									<td>Class(es) to be added to the list.</td>
+								</tr>
+								<tr>
+									<td>itemClass</td>
+									<td>String</td>
+									<td>No</td>
+									<td>list-group-item</td>
+									<td>list-group-item np-list-item</td>
+									<td>Class(es) to be added to each item in the list.</td>
+								</tr>
+								<tr>
+									<td>messageClass</td>
+									<td>String</td>
+									<td>No</td>
+									<td>list-group-item</td>
+									<td>list-group-item np-message-item</td>
+									<td>Class(es) to be added to each message item.</td>
+								</tr>
+								<tr>
+									<td>highlightClass</td>
+									<td>String</td>
+									<td>No</td>
+									<td>bg-info text-info</td>
+									<td>np-highlight</td>
+									<td>Class(es) to be added to the highlighted text.</td>
+								</tr>
+								<tr>
+									<td>itemFocusClass</td>
+									<td>String</td>
+									<td>No</td>
+									<td>active</td>
+									<td>np-active</td>
+									<td>Class(es) to be added to the focused item.</td>
+								</tr>
+								<tr>
+									<td>hasSelectionClass</td>
+									<td>String</td>
+									<td>No</td>
+									<td>has-success</td>
+									<td>np-has-selection</td>
+									<td>Class(es) to be added to the directive wrapper when a selection made.</td>
+								</tr>
+								<tr>
+									<td>openStateClass</td>
+									<td>String</td>
+									<td>No</td>
+									<td>np-autocomplete-open</td>
+									<td>np-autocomplete-open open-state</td>
+									<td>Class(es) to be added to directive when it's in 'open' state.</td>
+								</tr>
+								<tr>
+									<td>loadStateClass</td>
+									<td>String</td>
 									<td>No</td>
 									<td>np-autocomplete-loading</td>
-									<td>np-autocomplete-loading loading2</td>
-									<td>Class(es) to be added to directive in 'loading' state.</td>
+									<td>np-autocomplete-loading load-state</td>
+									<td>Class(es) to be added to directive when it's in 'load' state.</td>
+								</tr>
+								<tr>
+									<td>closeStateClass</td>
+									<td>String</td>
+									<td>No</td>
+									<td>np-autocomplete-close</td>
+									<td>np-autocomplete-close close-state</td>
+									<td>Class(es) to be added to directive when it's in 'close' state.</td>
+								</tr>
+								<tr>
+									<td>errorStateClass</td>
+									<td>String</td>
+									<td>No</td>
+									<td>has-error</td>
+									<td>error-state</td>
+									<td>Class(es) to be added to directive when it's in 'error' state.</td>
 								</tr>
 								<tr>
 									<td>each</td>
@@ -313,6 +408,30 @@
 										}
 									</td>
 									<td>Iterates over elements of retrived data.</td>
+								</tr>
+								<tr>
+									<td>onBlur</td>
+									<td>function</td>
+									<td>No</td>
+									<td></td>
+									<td>
+										function(errorData) {
+										<p class="tab">console.log('focus lost');</p>
+										}
+									</td>
+									<td>a callback function called when the directive loses focus.</td>
+								</tr>
+								<tr>
+									<td>onError</td>
+									<td>function</td>
+									<td>No</td>
+									<td></td>
+									<td>
+										function(errorData) {
+										<p class="tab">console.log(errorData);</p>
+										}
+									</td>
+									<td>A callback function called when an error occurred.</td>
 								</tr>
 								<tr>
 									<td>onSelect</td>
@@ -337,18 +456,6 @@
 										}
 									</td>
 									<td>A callback function called when the selection is lost.</td>
-								</tr>
-								<tr>
-									<td>onError</td>
-									<td>function</td>
-									<td>No</td>
-									<td></td>
-									<td>
-										function(errorData) {
-										<p class="tab">console.log(errorData);</p>
-										}
-									</td>
-									<td>A callback function called when an error occurred.</td>
 								</tr>
 							</tbody>
 						</table>

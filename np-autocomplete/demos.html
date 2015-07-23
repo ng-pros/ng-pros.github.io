@@ -16,15 +16,51 @@
 			body {
 				padding-top: 70px;
 			}
-			.np-autocomplete-list .list-group-item.search-item {
-				padding-left: 72px;
+			pre {
+				overflow: auto;
+				word-wrap: normal;
+				white-space: pre;
 			}
-			.np-autocomplete-list img {
-				margin-left: -60px;
+			.glyphicon-refresh-animate {
+				-animation: spin .7s infinite linear;
+				-ms-animation: spin .7s infinite linear;
+				-webkit-animation: spinw .7s infinite linear;
+				-moz-animation: spinm .7s infinite linear;
+			}
+			
+			@keyframes spin {
+				from { transform: scale(1) rotate(0deg);}
+				to { transform: scale(1) rotate(360deg);}
+			}
+			
+			@-webkit-keyframes spinw {
+				from { -webkit-transform: rotate(0deg);}
+				to { -webkit-transform: rotate(360deg);}
+			}
+			
+			@-moz-keyframes spinm {
+				from { -moz-transform: rotate(0deg);}
+				to { -moz-transform: rotate(360deg);}
+			}
+			.np-autocomplete-wrapper.form-group span.form-control-feedback {
+				display: none;
+			}
+			.np-autocomplete-wrapper.has-feedback span.form-control-feedback {
+				display: block;
+			}
+			.np-autocomplete-open input.form-control {
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+			.np-autocomplete-open .list-group-item:first-child {
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
+			}
+			.np-autocomplete-wrapper .list-group-item.active strong {
+				text-shadow: none;
 			}
 		</style>
 		<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
 		<script src="np-autocomplete.min.js"></script>
 		<script src="app.js"></script>
@@ -67,22 +103,51 @@
 				</div>
 			</div>
 			<div class="row" ng-controller="ctrl">
-				<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12">
-					<div class="form-group" np-autocomplete="options">
-						<label class="control-label">Search in Github repositories:</label>
-						<input type="text" placeholder="Search..." class="form-control"/>
+				<div class="col-md-6 col-md-offset-3">
+					<div class="row">
+						<div class="col-xs-6"><label>np-input-model:</label></div>
+						<div class="col-xs-6"><label>ng-model:</label></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6"><pre ng-bind="inputModel ? inputModel : '- No set -'"></pre></div>
+						<div class="col-xs-6"><pre ng-bind="idModel ? idModel : '- Not set -'"></pre></div>
+					</div>
+				</div>
+				<div class="col-md-6 col-md-offset-3">
+					<div class="form-group" np-autocomplete="options" ng-model="idModel" np-input-model="inputModel" np-auto="npAuto">
+						<!-- <div class="input-group"> -->
+							<!-- <span class="input-group-btn">
+								<button class="btn btn-default" type="button" ng-click="setNpInputModel()">Set np-input-model!</button>
+								<button class="btn btn-default" type="button" ng-click="setNgModel()">Set ng-model!</button>
+								<button class="btn btn-default" type="button" ng-click="setNpAuto()">Set np-auto!</button>
+							</span> -->
+							<input type="text" placeholder="Search in Github repositories" class="form-control"/>
+						<!-- </div> -->
+						<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate form-control-feedback" aria-hidden="true"></span>
 					</div>
 				</div>
 				<div class="col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">HTML</div>
-						<div class="panel-body"><pre>{{htmlCode}}</pre></div>
+						<div class="panel-body"><pre ng-bind="htmlCode"></pre></div>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">itemTemplate.tpl.html - cached with $templateCache</div>
+						<div class="panel-body"><pre ng-bind="itemTemplateCode"></pre></div>
 					</div>
 				</div>
 				<div class="col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">JS</div>
-						<div class="panel-body"><pre>{{jsCode}}</pre></div>
+						<div class="panel-body"><pre ng-bind="jsCode"></pre></div>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">CSS</div>
+						<div class="panel-body"><pre ng-bind="cssCode"></pre></div>
 					</div>
 				</div>
 			</div>
