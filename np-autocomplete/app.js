@@ -37,7 +37,7 @@ angular.module('app', ['ng-pros.directive.autocomplete'])
 		$scope.npAuto = 'angular';
 	};
 
-	$scope.htmlCode = '<div class="form-group" np-autocomplete="options" np-input-model="inputModel">\n' +
+	$scope.htmlCode = '<div class="form-group" np-autocomplete="options" ng-model="idModel" np-input-model="inputModel">\n' +
 		// '\t<div class="input-group">\n' +
 		// '\t\t<span class="input-group-btn">\n' +
 		// '\t\t\t<button class="btn btn-default" type="button" ng-click="programmaticallyLoad()">Programmatically Load!</button>\n' +
