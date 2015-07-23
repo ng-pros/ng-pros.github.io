@@ -38,12 +38,12 @@ angular.module('app', ['ng-pros.directive.autocomplete'])
 	};
 
 	$scope.htmlCode = '<div class="form-group" np-autocomplete="options" ng-model="raeef" np-input-model="inputModel">\n' +
-		'\t<div class="input-group">\n' +
-		'\t\t<span class="input-group-btn">\n' +
-		'\t\t\t<button class="btn btn-default" type="button" ng-click="programmaticallyLoad()">Programmatically Load!</button>\n' +
-		'\t\t</span>\n' +
-		'\t\t<input type="text" placeholder="Search in Github repositories" class="form-control"/>\n' +
-		'\t</div>\n' +
+		// '\t<div class="input-group">\n' +
+		// '\t\t<span class="input-group-btn">\n' +
+		// '\t\t\t<button class="btn btn-default" type="button" ng-click="programmaticallyLoad()">Programmatically Load!</button>\n' +
+		// '\t\t</span>\n' +
+		'\t<input type="text" placeholder="Search in Github repositories" class="form-control"/>\n' +
+		// '\t</div>\n' +
 		'\t<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate form-control-feedback" aria-hidden="true"></span>\n' +
 		'</div>';
 
