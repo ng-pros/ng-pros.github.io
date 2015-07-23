@@ -64,7 +64,7 @@ angular.module('app', ['ng-pros.directive.autocomplete'])
 	$scope.jsCode = "$scope.options = {\n" +
 		"\turl: 'https://api.github.com/search/repositories',\n" +
 		"\tdelay: 1000,\n" +
-		"\tnameAttr: 'full_name',\n" +
+		"\tnameAttr: 'name',\n" +
 		"\tminlength: 1,\n" +
 		"\tdataHolder: 'items',\n" +
 		"\tlimitParam: 'per_page',\n" +
