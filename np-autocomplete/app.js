@@ -71,7 +71,6 @@ angular.module('app', ['ng-pros.directive.autocomplete'])
 		"\tsearchParam: 'q',\n" +
 		"\tloadStateClass: 'has-feedback',\n" +
 		"\titemTemplateUrl: 'itemTemplate.tpl.html',\n" +
-		"\tprogrammaticallyLoad: 'true',\n" +
 		"\thighlightExactSearch: 'false'\n" +
 		"};";
 
